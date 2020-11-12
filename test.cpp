@@ -1,56 +1,18 @@
-#include <deque>
 #include <iostream>
 #include <string>
 using namespace std;
 int main() {
-  int n;
-  cin >> n;
-
-  deque<int> d;
-
-  while (n--) {
-    string cmd;
-    cin >> cmd;
-    if (cmd == "push_front") {
-      int num;
-      cin >> num;
-      d.push_front(num);
-    } else if (cmd == "push_back") {
-      int num;
-      cin >> num;
-      d.push_back(num);
-    } else if (cmd == "pop_front") {
-      if (d.empty()) {
-        cout << -1 << '\n';
-      } else {
-        cout << d.front() << '\n';
-        d.pop_front();
-      }
-    } else if (cmd == "pop_back") {
-      if (d.empty()) {
-        cout << -1 << '\n';
-      } else {
-        cout << d.back() << '\n';
-        d.pop_back();
-      }
-    } else if (cmd == "size") {
-      cout << d.size() << '\n';
-    } else if (cmd == "empty") {
-      cout << d.empty() << '\n';
-    } else if (cmd == "front") {
-      if (d.empty()) {
-        cout << -1 << '\n';
-      } else {
-        cout << d.front() << '\n';
-      }
-    } else if (cmd == "back") {
-      if (d.empty()) {
-        cout << -1 << '\n';
-      } else {
-        cout << d.back() << '\n';
-      }
-    }
+  string s;
+  cin >> s;
+  int n = s.size();
+  if (n % 3 == 1) {
+    cout << s[0];
+  } else if (n % 3 == 2) {
+    cout << (s[0] - '0') * 2 + (s[1] - '0');
   }
-
+  for (int i = n % 3; i < n; i += 3) {
+    cout << (s[i] - '0') * 4 + (s[i + 1] - '0') * 2 + (s[i + 2] - '0');
+  }
+  cout << '\n';
   return 0;
 }
